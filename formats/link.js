@@ -1,14 +1,34 @@
 import Inline from '../blots/inline';
 
 class Link extends Inline {
-  static create(value) {
+  static create(opts) {
+    let value = opts;
+    let target = false;
+    if (typeof value === 'object') {
+      target = opts.target;
+      value = opts.value;
+    }
     const node = super.create(value);
     node.setAttribute('href', this.sanitize(value));
-    node.setAttribute('target', '_blank');
+    if (target === false) {
+      if (value.startsWith('http') || value.startsWith('https')) {
+        node.setAttribute('target', '_blank');
+      } else {
+        node.setAttribute('target', '_self');
+      }
+    } else {
+      node.setAttribute('target', target);
+    }
     return node;
   }
-
   static formats(domNode) {
+    if (domNode.hasAttribute('target')) {
+      const opts = {
+        value: domNode.getAttribute('href'),
+        target: domNode.getAttribute('target'),
+      };
+      return opts;
+    }
     return domNode.getAttribute('href');
   }
 
