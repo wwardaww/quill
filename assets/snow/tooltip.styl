@@ -8,6 +8,45 @@ tooltipMargin = 8px
     color: textColor
     padding: 5px 12px
     white-space: nowrap
+    input[type="checkbox"]
+      display none
+      & + span
+        display block
+        position relative
+        padding-left 23px
+        margin-bottom 20px
+        font 13px 'Open Sans', Arial, sans-serif
+        color black
+        cursor pointer
+        -webkit-user-select none
+        -moz-user-select none
+        -ms-user-select none
+        &:last-child
+          margin-bottom 0
+        &:before
+          content: ''
+          display: block
+          width: 14px
+          height: 14px
+          border: 1px solid #06c
+          position: absolute
+          left: 0
+          top: 3px
+          opacity: 0.6
+          -webkit-transition: all 0.12s, border-color 0.08s
+          transition: all 0.12s, border-color 0.08s
+    input[type="checkbox"]:checked
+      & + span
+        &:before
+          width 10px
+          top 0
+          left 5px
+          border-radius 0
+          opacity 1
+          border-top-color transparent
+          border-left-color transparent
+          -webkit-transform rotate(45deg)
+          transform rotate(45deg)
     &::before
       content: "Visit URL:"
       line-height: 26px
@@ -26,6 +65,8 @@ tooltipMargin = 8px
       overflow-x: hidden
       text-overflow: ellipsis
       vertical-align: top
+    .ql-check-container
+      display none
     a.ql-action::after
       border-right: 1px solid borderColor
       content: 'Edit'
@@ -37,6 +78,9 @@ tooltipMargin = 8px
     a
       line-height: 26px
   .ql-tooltip.ql-editing
+    .ql-check-container
+      display block
+      margin-top: 7px
     a.ql-preview, a.ql-remove
       display: none
     input[type=text]

@@ -8,7 +8,7 @@ import icons from '../ui/icons';
 const TOOLBAR_CONFIG = [
   [{ header: ['1', '2', '3', false] }],
   ['bold', 'italic', 'underline', 'link'],
-  [{ list: 'ordered' }, { list: 'bullet' }],
+  [{ listOl: 'ordered' }, { listUl: 'bullet' }],
   ['clean'],
 ];
 
@@ -76,6 +76,7 @@ class SnowTooltip extends BaseTooltip {
       if (typeof preview === 'object') {
         preview = preview.value
       }
+      console.log(preview)
       this.textbox.value = preview;
     } else if (mode !== this.root.getAttribute('data-mode')) {
       this.textbox.value = '';
@@ -150,7 +151,7 @@ SnowTooltip.TEMPLATE = [
   '<input type="text" data-formula="e=mc^2" data-link="https://quilljs.com" data-video="Embed URL">',
   '<a class="ql-action"></a>',
   '<a class="ql-remove"></a>',
-  '<div class="ql-check-container"><input type="checkbox" name="Open in New Window" class="ql-check">Open in New Window</div>'
+  '<div class="ql-check-container"><label><input type="checkbox" class="ql-check"><span>Open in New Window</span></label></div>'
 ].join('');
 
 class SnowTheme extends BaseTheme {

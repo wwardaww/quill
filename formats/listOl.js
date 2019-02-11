@@ -6,7 +6,7 @@ class ListContainer extends Container {}
 ListContainer.blotName = 'list-container';
 ListContainer.tagName = 'OL';
 
-class ListItem extends Block {
+class ListItemOl extends Block {
   static create(value) {
     const node = super.create();
     node.setAttribute('data-list', value);
@@ -48,10 +48,10 @@ class ListItem extends Block {
     }
   }
 }
-ListItem.blotName = 'list';
-ListItem.tagName = 'LI';
+ListItemOl.blotName = 'list';
+ListItemOl.tagName = 'LI';
 
-ListContainer.allowedChildren = [ListItem];
-ListItem.requiredContainer = ListContainer;
+ListContainer.allowedChildren = [ListItemOl];
+ListItemOl.requiredContainer = ListContainer;
 
-export { ListContainer, ListItem as default };
+export { ListContainer, ListItemOl as default };

@@ -38,9 +38,19 @@ class Link extends Inline {
 
   format(name, value) {
     if (name !== this.statics.blotName || !value) {
-      super.format(name, value);
+      if (typeof value === 'object' && value !== null) {
+        super.format(name, value.value);
+        this.domNode.setAttribute('target', value.target);
+      } else {
+        super.format(name, value);
+      }
     } else {
-      this.domNode.setAttribute('href', this.constructor.sanitize(value));
+      if (typeof value === 'object' && value !== null) {
+        this.domNode.setAttribute('href', this.constructor.sanitize(value.value));
+        this.domNode.setAttribute('target', value.target);
+      } else {
+        this.domNode.setAttribute('href', this.constructor.sanitize(value));
+      }
     }
   }
 }
