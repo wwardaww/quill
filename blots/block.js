@@ -126,7 +126,7 @@ class Block extends BlockBlot {
 Block.blotName = 'block';
 Block.tagName = 'P';
 Block.defaultChild = Break;
-Block.allowedChildren = [Break, Inline, EmbedBlot, TextBlot];
+Block.allowedChildren = [Break, Inline, EmbedBlot, TextBlot, Block];
 
 class BlockEmbed extends EmbedBlot {
   attach() {
